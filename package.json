@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/HoryzonEu/HoryBot#readme",
   "dependencies": {
-    "discord.js": "^12.4.1",
+    "discord.js": "^12.3.1",
     "fs": "0.0.1-security"
   }
 }
