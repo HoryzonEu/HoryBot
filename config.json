@@ -1,3 +1,4 @@
 {
-  "token": "secret-token"
+  "token": "secret-token",
+  "prefix": "/"
  }
