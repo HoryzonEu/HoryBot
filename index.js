@@ -38,8 +38,8 @@ bot.once("ready", function (){
    
     //Auto role message
     const auto_role_message = channel.messages.cache.first();
-    console.log(`${guild.name} -- ${channel.name} -- ${length(channel.messages)}`);
-    const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
+    console.log(`${guild.name} -- ${channel.name} -- ${guild.channels.cache.get("773002258316394496").cache.first()}`);
+   /* const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
     const auto_role = auto_role_message.createReactionCollector(filter);
     auto_role.on("collect", (reaction, user) => {
         const member =guild.members.cache.get(user.id);
@@ -75,7 +75,7 @@ bot.once("ready", function (){
             default:
                 break;
         }
-    });
+    });*/
 });
 
 //Get the Message Event
