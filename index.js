@@ -33,8 +33,8 @@ bot.once("ready", function (){
     //Init guild, channel and list of role by id
     const guild = bot.guilds.cache.get("192635786024189953");
     const channel = guild.channels.cache.get("773002258316394496");
-    const fonda = member.guild.roles.cache.get("733070093570932739");
-    const admin = member.guild.roles.cache.get("733069436969549834");
+    const fonda = guild.roles.cache.get("733070093570932739");
+    const admin = guild.roles.cache.get("733069436969549834");
 
     //Auto role message
     const auto_role_message = channel.messages.cache.get("773002830683963393");
