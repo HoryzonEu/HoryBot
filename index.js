@@ -7,6 +7,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const { token, prefix } = require("./config.json");
 
+
 //Create collections
 bot.commands = new Discord.Collection();
 bot.alias = new Discord.Collection();
@@ -28,6 +29,52 @@ for(const file of commandFiles){
 bot.once("ready", function (){
     bot.user.setActivity("Pour vous servir !");
     console.log("HoryBot is ready !");
+
+    //Init guild, channel and list of role by id
+    const guild = bot.guilds.cache.get("192635786024189953");
+    const channel = guild.channels.cache.get("773002258316394496");
+    const fonda = member.guild.roles.cache.get("733070093570932739");
+    const admin = member.guild.roles.cache.get("733069436969549834");
+
+    //Auto role message
+    const auto_role_message = channel.messages.cache.get("773002830683963393");
+    const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
+    const auto_role = auto_role_message.createReactionCollector(filter);
+    auto_role.on("collect", (reaction, user) => {
+        const member =guild.members.cache.get(user.id);
+        switch(reaction.name){
+            case "1️⃣":
+                if(!member.roles.has(fonda)){
+                    member.roles.add(fonda)
+                }
+                break;
+            case "2️⃣":
+                if(!member.roles.has(admin)){
+                    member.roles.add(admin)
+                }
+                break;
+            default:
+                reaction.remove();
+                break;
+        }
+    });
+    auto_role.on("remove", (reaction, user) => {
+        const member =guild.members.cache.get(user.id);
+        switch(reaction.name){
+            case "1️⃣":
+                if(member.roles.has(fonda)){
+                    member.roles.remove(fonda)
+                }
+                break;
+            case "2️⃣":
+                if(member.roles.has(admin)){
+                    member.roles.remove(admin)
+                }
+                break;
+            default:
+                break;
+        }
+    });
 });
 
 //Get the Message Event
