@@ -55,6 +55,18 @@ bot.on("message", async message => {
         console.error(error);
         message.reply("OOPS... An error occured");
     }
+});
+
+//Get the New Member Event
+bot.on("guildMemberAdd", async member => {
+
+    //Get the 2 roles separation by their id
+    const project_separator = member.guild.roles.cache.find(role => role.id === "715210102516351006");
+    const role_separator = member.guild.roles.cache.find(role => role.id === "733069259126865922");
+
+    //Add these role to the new member
+    member.roles.add(project_separator);
+    member.roles.add(role_separator);
 })
 
 //Login the bot with de secret token
