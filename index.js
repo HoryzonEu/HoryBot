@@ -10,6 +10,7 @@ const { token, prefix } = require("./config.json");
 //Create collections
 bot.commands = new Discord.Collection();
 bot.alias = new Discord.Collection();
+const commandFiles = fs.readdirSync('./cmds').filter(file => file.endsWith('.js'));
 
 //List all the commands
 for(const file of commandFiles){
