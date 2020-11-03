@@ -73,47 +73,51 @@ bot.on("guildMemberAdd", member => {
 bot.on("messageReactionAdd", (reaction, user) => {
     const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
     const admin = reaction.message.guild.roles.cache.get("733069436969549834");
-    if(reaction.message.id === "773019180156583947")
+    console.log(`reaction added on message ${reaction.message.id}`);
+    if(reaction.message.id == "773019180156583947")
     {
-    const member = reaction.message.guild.members.cache.get(user.id);
-        switch(reaction.emoji.name){
-            case "1️⃣":
-                if(!member.roles.has(fonda)){
-                    member.roles.add(fonda)
-                }
-                break;
-            case "2️⃣":
-                if(!member.roles.has(admin)){
-                    member.roles.add(admin)
-                }
-                break;
-            default:
-                reaction.remove();
-                break;
-        }
+        const member = reaction.message.guild.members.cache.get(user.id);
+        console.log(`reaction added by ${member.id}`);
+            switch(reaction.emoji.name){
+                case "1️⃣":
+                    if(!member.roles.has(fonda)){
+                        member.roles.add(fonda)
+                    }
+                    break;
+                case "2️⃣":
+                    if(!member.roles.has(admin)){
+                        member.roles.add(admin)
+                    }
+                    break;
+                default:
+                    reaction.remove();
+                    break;
+            }
     }
 })
 
 bot.on("messageReactionRemove", (reaction, user) => {
     const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
     const admin = reaction.message.guild.roles.cache.get("733069436969549834");
-    if(reaction.message.id === "773019180156583947")
+    console.log(`reaction removed on message ${reaction.message.id}`);
+    if(reaction.message.id == "773019180156583947")
     {
-    const member = reaction.message.guild.members.cache.get(user.id);
-        switch(reaction.emoji.name){
-            case "1️⃣":
-                if(member.roles.has(fonda)){
-                    member.roles.remove(fonda)
+        const member = reaction.message.guild.members.cache.get(user.id);
+        console.log(`reaction removed by ${member.id}`);
+            switch(reaction.emoji.name){
+                case "1️⃣":
+                    if(member.roles.has(fonda)){
+                        member.roles.remove(fonda)
+                    }
+                    break;
+                case "2️⃣":
+                    if(member.roles.has(admin)){
+                        member.roles.remove(admin)
+                    }
+                    break;
+                default:
+                    break;
                 }
-                break;
-            case "2️⃣":
-                if(member.roles.has(admin)){
-                    member.roles.remove(admin)
-                }
-                break;
-            default:
-                break;
-            }
     }
 })
 
