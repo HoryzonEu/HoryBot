@@ -37,8 +37,8 @@ bot.once("ready", function (){
     const admin = guild.roles.cache.get("733069436969549834");
    
     //Auto role message
-    const auto_role_message = channel.messages.lastMessage;
-    console.log(`${guild.name} -- ${channel.name} -- ${auto_role_message.content}`);
+    const auto_role_message = channel.lastMessage;
+    console.log(`${guild.name} -- ${channel.type} -- ${auto_role_message}`);
     const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
     const auto_role = auto_role_message.createReactionCollector(filter);
     auto_role.on("collect", (reaction, user) => {
