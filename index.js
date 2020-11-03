@@ -86,11 +86,9 @@ bot.on("messageReactionAdd", async (reaction, user) => {
     const graph = reaction.message.guild.roles.cache.get("733069581824032818");
     const anim = reaction.message.guild.roles.cache.get("733070037388361858");
     const builder = reaction.message.guild.roles.cache.get("733069499816869949");
-    console.log(`reaction added on message ${reaction.message.id}`);
     if(reaction.message.id == "773019180156583947")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
-        console.log(`reaction added by ${member.id}`);
             switch(reaction.emoji.name){
                 case "1️⃣":
                     if(!member.roles.cache.has(fonda)){
@@ -150,46 +148,30 @@ bot.on("messageReactionRemove", async (reaction, user) => {
     const graph = reaction.message.guild.roles.cache.get("733069581824032818");
     const anim = reaction.message.guild.roles.cache.get("733070037388361858");
     const builder = reaction.message.guild.roles.cache.get("733069499816869949");
-    console.log(`reaction removed on message ${reaction.message.id}`);
     if(reaction.message.id == "773019180156583947")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
-        console.log(`reaction removed by ${member.id}`);
             switch(reaction.emoji.name){
                 case "1️⃣":
-                    if(member.roles.cache.has(fonda)){
                         member.roles.remove(fonda)
-                    }
                     break;
                 case "2️⃣":
-                    if(member.roles.cache.has(admin)){
                         member.roles.remove(admin)
-                    }
                     break;
                 case "3️⃣":
-                    if(member.roles.cache.has(modo)){
                         member.roles.remove(modo)
-                    }
                     break;
                 case "4️⃣":
-                    if(member.roles.cache.has(dev)){
                         member.roles.remove(dev)
-                    }
                     break;
                 case "5️⃣":
-                    if(member.roles.cache.has(graph)){
                         member.roles.remove(graph)
-                    }
                     break;
                 case "🇦":
-                    //if(member.roles.cache.has(anim)){
                     member.roles.remove(anim)
-                    //}
                     break;
                 case "🇧":
-                    if(member.roles.cache.has(builder)){
                         member.roles.remove(builder)
-                    }
                     break;
                 default:
                     break;
