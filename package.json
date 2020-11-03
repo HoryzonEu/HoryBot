@@ -1,0 +1,23 @@
+{
+  "name": "horybot",
+  "version": "1.0.0",
+  "description": "Discord Bot for Horyzon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoryzonEu/HoryBot.git"
+  },
+  "author": "Azod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HoryzonEu/HoryBot/issues"
+  },
+  "homepage": "https://github.com/HoryzonEu/HoryBot#readme",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "fs": "0.0.1-security"
+  }
+}
