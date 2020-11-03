@@ -1,6 +1,6 @@
 //Create the bot
 const Discord = require("discord.js");
-const bot = new Discord.Client();
+const bot = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 'use strict';
 
 //Init the node modules and config parameters
@@ -26,7 +26,7 @@ for(const file of commandFiles){
 }
 
 //Set the activity of the bot when he's ON
-bot.on("ready", function (){
+bot.once("ready", function (){
     bot.user.setActivity("Pour vous servir !");
     console.log("HoryBot is ready !");
 });
@@ -70,10 +70,18 @@ bot.on("guildMemberAdd", member => {
     member.roles.add(role_separator).catch(console.error);
 });
 
-bot.on("messageReactionAdd", (reaction, user) => {
+bot.on("messageReactionAdd", async (reaction, user) => {
     const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
     const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     console.log(`reaction added on message ${reaction.message.id}`);
+    if (reaction.partial) {
+        try {
+			await reaction.fetch();
+		} catch (error) {
+			console.error('Something went wrong when fetching the message: ', error);
+            return;
+        }
+    }
     if(reaction.message.id == "773019180156583947")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
@@ -94,12 +102,20 @@ bot.on("messageReactionAdd", (reaction, user) => {
                     break;
             }
     }
-})
+});
 
 bot.on("messageReactionRemove", (reaction, user) => {
     const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
     const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     console.log(`reaction removed on message ${reaction.message.id}`);
+    if (reaction.partial) {
+        try {
+			await reaction.fetch();
+		} catch (error) {
+			console.error('Something went wrong when fetching the message: ', error);
+            return;
+        }
+    }
     if(reaction.message.id == "773019180156583947")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
@@ -119,7 +135,7 @@ bot.on("messageReactionRemove", (reaction, user) => {
                     break;
                 }
     }
-})
+});
 
 //Login the bot with de secret token
 bot.login(token);
