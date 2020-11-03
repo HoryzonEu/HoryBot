@@ -182,9 +182,9 @@ bot.on("messageReactionRemove", async (reaction, user) => {
                     }
                     break;
                 case "🇦":
-                    if(member.roles.cache.has(anim)){
-                        member.roles.remove(anim)
-                    }
+                    //if(member.roles.cache.has(anim)){
+                    member.roles.remove(anim)
+                    //}
                     break;
                 case "🇧":
                     if(member.roles.cache.has(builder)){
