@@ -88,12 +88,12 @@ bot.on("messageReactionAdd", async (reaction, user) => {
         console.log(`reaction added by ${member.id}`);
             switch(reaction.emoji.name){
                 case "1️⃣":
-                    if(!member.roles.has(fonda)){
+                    if(!member.roles.cache.has(fonda)){
                         member.roles.add(fonda)
                     }
                     break;
                 case "2️⃣":
-                    if(!member.roles.has(admin)){
+                    if(!member.roles.cache.has(admin)){
                         member.roles.add(admin)
                     }
                     break;
@@ -122,12 +122,12 @@ bot.on("messageReactionRemove", async (reaction, user) => {
         console.log(`reaction removed by ${member.id}`);
             switch(reaction.emoji.name){
                 case "1️⃣":
-                    if(member.roles.has(fonda)){
+                    if(member.roles.cache.has(fonda)){
                         member.roles.remove(fonda)
                     }
                     break;
                 case "2️⃣":
-                    if(member.roles.has(admin)){
+                    if(member.roles.cache.has(admin)){
                         member.roles.remove(admin)
                     }
                     break;
