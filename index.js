@@ -65,8 +65,8 @@ bot.on("guildMemberAdd", async member => {
     const role_separator = member.guild.roles.cache.find(role => role.id === "733069259126865922");
 
     //Add these role to the new member
-    member.roles.add(project_separator);
-    member.roles.add(role_separator);
+    member.roles.add(project_separator.id);
+    member.roles.add(role_separator.id);
 })
 
 //Login the bot with de secret token
