@@ -71,6 +71,8 @@ bot.on("guildMemberAdd", member => {
 });
 
 bot.on("messageReactionAdd", (reaction, user) => {
+    const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
+    const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     if(reaction.message.id === "773019180156583947")
     {
     const member = reaction.message.guild.members.cache.get(user.id);
@@ -93,6 +95,8 @@ bot.on("messageReactionAdd", (reaction, user) => {
 })
 
 bot.on("messageReactionRemove", (reaction, user) => {
+    const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
+    const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     if(reaction.message.id === "773019180156583947")
     {
     const member = reaction.message.guild.members.cache.get(user.id);
