@@ -32,7 +32,7 @@ bot.once("ready", function (){
 
     //Init guild, channel and list of role by id
     const guild = bot.guilds.cache.get("192635786024189953");
-    const channel = guild.channels.cache.get("773002258316394496");
+    const channel = bot.channels.fetch("773002258316394496");
     const fonda = guild.roles.cache.get("733070093570932739");
     const admin = guild.roles.cache.get("733069436969549834");
    
