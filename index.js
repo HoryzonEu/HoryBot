@@ -58,17 +58,17 @@ bot.on("message", async message => {
 });
 
 //Get the New Member Event
-bot.on("guildMemberAdd", async member => {
+bot.on("guildMemberAdd", member => {
 
     //Get the 2 roles separation by their id
-    let project_separator = member.guild.roles.cache.get("715210102516351006");
-    let role_separator = member.guild.roles.cache.get("733069259126865922");
+    const project_separator = member.guild.roles.cache.get("715210102516351006");
+    const role_separator = member.guild.roles.cache.get("733069259126865922");
 
     //Add these role to the new member
-    await member.roles.add(project_separator).catch(console.error);
-    await member.roles.add(role_separator).catch(console.error);
-    console.log(`${project_separator.name} // ${role_separator.name}`);
-})
+    member.roles.add(project_separator).catch(console.error);
+    member.roles.add(role_separator).catch(console.error);
+    console.log(`Added roles ${project_separator.name} && ${role_separator.name}`);
+});
 
 //Login the bot with de secret token
 bot.login(token);
