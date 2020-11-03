@@ -35,7 +35,7 @@ bot.once("ready", function (){
 bot.on("message", async message => {
 
     //If the author is a bot, don't continue
-    if(message.author.bot) return;
+    //if(message.author.bot) return;
     
     //Split the commands and arguments
     const args = message.content.slice(prefix.length).trim().split(/ +/);
