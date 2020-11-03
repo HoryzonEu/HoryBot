@@ -38,7 +38,7 @@ bot.once("ready", function (){
    
     //Auto role message
     const auto_role_message = channel.messages.cache.first();
-    console.log(`${guild.name} -- ${channel.name} -- ${channel.lastMessage}`);
+    console.log(`${guild.name} -- ${channel.name} -- ${length(channel.messages)}`);
     const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
     const auto_role = auto_role_message.createReactionCollector(filter);
     auto_role.on("collect", (reaction, user) => {
@@ -119,3 +119,8 @@ bot.on("guildMemberAdd", member => {
 
 //Login the bot with de secret token
 bot.login(token);
+
+
+function length(obj) {
+    return Object.keys(obj).length;
+}
