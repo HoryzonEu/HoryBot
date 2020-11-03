@@ -38,7 +38,7 @@ bot.once("ready", function (){
    
     //Auto role message
     const auto_role_message = channel.messages.cache.first();
-    console.log(`${guild.name} -- ${channel.name} -- ${guild.channels.cache.get("773002258316394496").messages.cache.first()}`);
+    console.log(`${guild.name} -- ${channel.name} -- ${guild.channels.cache.get("773002258316394496").messages.fetch("773019180156583947").content}`);
    /* const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
     const auto_role = auto_role_message.createReactionCollector(filter);
     auto_role.on("collect", (reaction, user) => {
