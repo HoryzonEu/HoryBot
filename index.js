@@ -26,7 +26,7 @@ for(const file of commandFiles){
 }
 
 //Set the activity of the bot when he's ON
-bot.once("ready", function (){
+bot.on("ready", function (){
     bot.user.setActivity("Pour vous servir !");
     console.log("HoryBot is ready !");
 
