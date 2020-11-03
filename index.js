@@ -41,6 +41,20 @@ bot.on("message", async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
+    if (message.channel.id == "773002258316394496")
+    {
+        message.react("1️⃣");
+        message.react("2️⃣");
+        message.react("3️⃣");
+        message.react("4️⃣");
+        message.react("5️⃣");
+        message.react("6️⃣");
+        message.react("7️⃣");
+        message.react("8️⃣");
+        message.react("9️⃣");
+        message.react("🇦");
+        message.react("🇧");
+    }
     //If the command doesn't exit, don't continue
     if(!(bot.commands.has(command) || bot.alias.has(command))) return;
 
@@ -79,25 +93,29 @@ bot.on("messageReactionAdd", async (reaction, user) => {
             return;
         }
     }
-    const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
-    const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     const modo = reaction.message.guild.roles.cache.get("733069628309241856");
-    const dev = reaction.message.guild.roles.cache.get("733069524215136306");
+    const devweb = reaction.message.guild.roles.cache.get("733069524215136306");
     const graph = reaction.message.guild.roles.cache.get("733069581824032818");
     const anim = reaction.message.guild.roles.cache.get("733070037388361858");
     const builder = reaction.message.guild.roles.cache.get("733069499816869949");
+    const sysadmin = reaction.message.guild.roles.cache.get("773142752643776532");
+    const discadmin = reaction.message.guild.roles.cache.get("773142754317959179");
+    const devplug = reaction.message.guild.roles.cache.get("773143540498038786");
+    const devdisc = reaction.message.guild.roles.cache.get("773143639642734593");
+    const gm = reaction.message.guild.roles.cache.get("773143245034356738");
+    const videaste = reaction.message.guild.roles.cache.get("773142758881492992");
     if(reaction.message.id == "773019180156583947")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
             switch(reaction.emoji.name){
                 case "1️⃣":
-                    if(!member.roles.cache.has(fonda)){
-                        member.roles.add(fonda)
+                    if(!member.roles.cache.has(sysadmin)){
+                        member.roles.add(sysadmin)
                     }
                     break;
                 case "2️⃣":
-                    if(!member.roles.cache.has(admin)){
-                        member.roles.add(admin)
+                    if(!member.roles.cache.has(discadmin)){
+                        member.roles.add(discadmin)
                     }
                     break;
                 case "3️⃣":
@@ -106,25 +124,45 @@ bot.on("messageReactionAdd", async (reaction, user) => {
                     }
                     break;
                 case "4️⃣":
-                    if(!member.roles.cache.has(dev)){
-                        member.roles.add(dev)
+                    if(!member.roles.cache.has(devplug)){
+                        member.roles.add(devplug)
                     }
                     break;
                 case "5️⃣":
-                    if(!member.roles.cache.has(graph)){
-                        member.roles.add(graph)
+                    if(!member.roles.cache.has(devdisc)){
+                        member.roles.add(devdisc)
+                    }
+                    break;
+                case "6️⃣":
+                    if(!member.roles.cache.has(devweb)){
+                        member.roles.add(devweb)
+                    }
+                    break;
+                case "7️⃣":
+                    if(!member.roles.cache.has(gm)){
+                        member.roles.add(gm)
+                    }
+                    break;
+                case "8️⃣":
+                    if(!member.roles.cache.has(anim)){
+                        member.roles.add(anim)
+                    }
+                    break;
+                case "9️⃣":
+                    if(!member.roles.cache.has(videaste)){
+                        member.roles.add(videaste)
                     }
                     break;
                 case "🇦":
-                    if(!member.roles.cache.has(anim)){
-                        member.roles.add(anim)
+                    if(!member.roles.cache.has(graph)){
+                        member.roles.add(graph)
                     }
                     break;
                 case "🇧":
                     if(!member.roles.cache.has(builder)){
                         member.roles.add(builder)
                     }
-                    break;
+                        break;
                 default:
                     reaction.remove();
                     break;
@@ -141,41 +179,57 @@ bot.on("messageReactionRemove", async (reaction, user) => {
             return;
         }
     }
-    const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
-    const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     const modo = reaction.message.guild.roles.cache.get("733069628309241856");
-    const dev = reaction.message.guild.roles.cache.get("733069524215136306");
+    const devweb = reaction.message.guild.roles.cache.get("733069524215136306");
     const graph = reaction.message.guild.roles.cache.get("733069581824032818");
     const anim = reaction.message.guild.roles.cache.get("733070037388361858");
     const builder = reaction.message.guild.roles.cache.get("733069499816869949");
+    const sysadmin = reaction.message.guild.roles.cache.get("773142752643776532");
+    const discadmin = reaction.message.guild.roles.cache.get("773142754317959179");
+    const devplug = reaction.message.guild.roles.cache.get("773143540498038786");
+    const devdisc = reaction.message.guild.roles.cache.get("773143639642734593");
+    const gm = reaction.message.guild.roles.cache.get("773143245034356738");
+    const videaste = reaction.message.guild.roles.cache.get("773142758881492992");
     if(reaction.message.id == "773019180156583947")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
             switch(reaction.emoji.name){
                 case "1️⃣":
-                        member.roles.remove(fonda)
+                        member.roles.remove(sysadmin)
                     break;
                 case "2️⃣":
-                        member.roles.remove(admin)
+                        member.roles.remove(discadmin)
                     break;
                 case "3️⃣":
                         member.roles.remove(modo)
                     break;
                 case "4️⃣":
-                        member.roles.remove(dev)
+                        member.roles.remove(devplug)
                     break;
                 case "5️⃣":
-                        member.roles.remove(graph)
+                        member.roles.remove(devdisc)
+                    break;
+                case "6️⃣":
+                        member.roles.remove(devweb)
+                    break;
+                case "7️⃣":
+                        member.roles.remove(gm)
+                    break;
+                case "8️⃣":
+                        member.roles.remove(anim)
+                    break;
+                case "9️⃣":
+                        member.roles.remove(videaste)
                     break;
                 case "🇦":
-                    member.roles.remove(anim)
+                        member.roles.remove(graph)
                     break;
                 case "🇧":
                         member.roles.remove(builder)
-                    break;
+                        break;
                 default:
                     break;
-                }
+            }
     }
 });
 
