@@ -104,7 +104,7 @@ bot.on("messageReactionAdd", async (reaction, user) => {
     }
 });
 
-bot.on("messageReactionRemove", (reaction, user) => {
+bot.on("messageReactionRemove", async (reaction, user) => {
     const fonda = reaction.message.guild.roles.cache.get("733070093570932739");
     const admin = reaction.message.guild.roles.cache.get("733069436969549834");
     console.log(`reaction removed on message ${reaction.message.id}`);
