@@ -35,26 +35,11 @@ bot.once("ready", function (){
 bot.on("message", async message => {
 
     //If the author is a bot, don't continue
-    //if(message.author.bot) return;
+    if(message.author.bot) return;
     
     //Split the commands and arguments
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
-
-    if (message.channel.id == "773002258316394496")
-    {
-        message.react("1️⃣");
-        message.react("2️⃣");
-        message.react("3️⃣");
-        message.react("4️⃣");
-        message.react("5️⃣");
-        message.react("6️⃣");
-        message.react("7️⃣");
-        message.react("8️⃣");
-        message.react("9️⃣");
-        message.react("🇦");
-        message.react("🇧");
-    }
     //If the command doesn't exit, don't continue
     if(!(bot.commands.has(command) || bot.alias.has(command))) return;
 
@@ -104,7 +89,7 @@ bot.on("messageReactionAdd", async (reaction, user) => {
     const devdisc = reaction.message.guild.roles.cache.get("773143639642734593");
     const gm = reaction.message.guild.roles.cache.get("773143245034356738");
     const videaste = reaction.message.guild.roles.cache.get("773142758881492992");
-    if(reaction.message.id == "773019180156583947")
+    if(reaction.message.id == "773151483956035584")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
             switch(reaction.emoji.name){
@@ -190,7 +175,7 @@ bot.on("messageReactionRemove", async (reaction, user) => {
     const devdisc = reaction.message.guild.roles.cache.get("773143639642734593");
     const gm = reaction.message.guild.roles.cache.get("773143245034356738");
     const videaste = reaction.message.guild.roles.cache.get("773142758881492992");
-    if(reaction.message.id == "773019180156583947")
+    if(reaction.message.id == "773151483956035584")
     {
         const member = reaction.message.guild.members.cache.get(user.id);
             switch(reaction.emoji.name){
