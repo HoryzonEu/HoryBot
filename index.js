@@ -35,11 +35,12 @@ bot.once("ready", function (){
     const channel = guild.channels.cache.get("773002258316394496");
     const fonda = guild.roles.cache.get("733070093570932739");
     const admin = guild.roles.cache.get("733069436969549834");
+    channel.send("hello v2");
    
     //Auto role message
-    const auto_role_message = channel.messages.cache.get("773121067761008670");
+    const auto_role_message = channel.messages.channel.lastMessage;
     console.log(`${guild.name} -- ${channel.name}`);
-    channel.send("hello");
+    
     auto_role_message.react("1️⃣");
    /* const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
     const auto_role = auto_role_message.createReactionCollector(filter);
