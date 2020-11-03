@@ -36,8 +36,9 @@ bot.once("ready", function (){
     const fonda = guild.roles.cache.get("733070093570932739");
     const admin = guild.roles.cache.get("733069436969549834");
 
+    console.log(`${guild.name} -- ${channel.name}`);
     //Auto role message
-    const auto_role_message = channel.messages.cache.get("773002830683963393");
+    const auto_role_message = channel.messages.cache.fetch("773002830683963393");
     const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
     const auto_role = auto_role_message.createReactionCollector(filter);
     auto_role.on("collect", (reaction, user) => {
@@ -114,7 +115,6 @@ bot.on("guildMemberAdd", member => {
     //Add these role to the new member
     member.roles.add(project_separator).catch(console.error);
     member.roles.add(role_separator).catch(console.error);
-    console.log(`Added roles ${project_separator.name} && ${role_separator.name}`);
 });
 
 //Login the bot with de secret token
