@@ -29,56 +29,6 @@ for(const file of commandFiles){
 bot.on("ready", function (){
     bot.user.setActivity("Pour vous servir !");
     console.log("HoryBot is ready !");
-
-    //Init guild, channel and list of role by id
-    const guild = bot.guilds.cache.get("192635786024189953");
-    const channel = guild.channels.cache.get("773002258316394496");
-    const fonda = guild.roles.cache.get("733070093570932739");
-    const admin = guild.roles.cache.get("733069436969549834");
-    console.log(`${guild.name} -- ${channel.name} -- ${length(channel.members)}`);
-    channel.send("hello v2");
-   
-    //Auto role message
-    const auto_role_message = channel.messages.channel.lastMessage;
-    channel.messages.cache.each(m => console.log(`${m.id} \n`))
-    
-   /* const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣";
-    const auto_role = auto_role_message.createReactionCollector(filter);
-    auto_role.on("collect", (reaction, user) => {
-        const member =guild.members.cache.get(user.id);
-        switch(reaction.name){
-            case "1️⃣":
-                if(!member.roles.has(fonda)){
-                    member.roles.add(fonda)
-                }
-                break;
-            case "2️⃣":
-                if(!member.roles.has(admin)){
-                    member.roles.add(admin)
-                }
-                break;
-            default:
-                reaction.remove();
-                break;
-        }
-    });
-    auto_role.on("remove", (reaction, user) => {
-        const member =guild.members.cache.get(user.id);
-        switch(reaction.name){
-            case "1️⃣":
-                if(member.roles.has(fonda)){
-                    member.roles.remove(fonda)
-                }
-                break;
-            case "2️⃣":
-                if(member.roles.has(admin)){
-                    member.roles.remove(admin)
-                }
-                break;
-            default:
-                break;
-        }
-    });*/
 });
 
 //Get the Message Event
@@ -119,6 +69,49 @@ bot.on("guildMemberAdd", member => {
     member.roles.add(project_separator).catch(console.error);
     member.roles.add(role_separator).catch(console.error);
 });
+
+bot.on("messageReactionAdd", (reaction, user) => {
+    if(reaction.message.id === "773019180156583947")
+    {
+    const member = reaction.message.guild.members.cache.get(user.id);
+        switch(reaction.emoji.name){
+            case "1️⃣":
+                if(!member.roles.has(fonda)){
+                    member.roles.add(fonda)
+                }
+                break;
+            case "2️⃣":
+                if(!member.roles.has(admin)){
+                    member.roles.add(admin)
+                }
+                break;
+            default:
+                reaction.remove();
+                break;
+        }
+    }
+})
+
+bot.on("messageReactionRemove", (reaction, user) => {
+    if(reaction.message.id === "773019180156583947")
+    {
+    const member = reaction.message.guild.members.cache.get(user.id);
+        switch(reaction.emoji.name){
+            case "1️⃣":
+                if(member.roles.has(fonda)){
+                    member.roles.remove(fonda)
+                }
+                break;
+            case "2️⃣":
+                if(member.roles.has(admin)){
+                    member.roles.remove(admin)
+                }
+                break;
+            default:
+                break;
+            }
+    }
+})
 
 //Login the bot with de secret token
 bot.login(token);
