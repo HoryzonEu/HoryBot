@@ -70,6 +70,7 @@ bot.on("guildMemberAdd", member => {
 });
 
 bot.on("messageReactionAdd", async (reaction, user) => {
+    //Fetch old message
     if (reaction.partial) {
         try {
 			await reaction.fetch();
@@ -78,6 +79,8 @@ bot.on("messageReactionAdd", async (reaction, user) => {
             return;
         }
     }
+
+    //Init all the role
     const modo = reaction.message.guild.roles.cache.get("733069628309241856");
     const devweb = reaction.message.guild.roles.cache.get("733069524215136306");
     const graph = reaction.message.guild.roles.cache.get("733069581824032818");
@@ -89,9 +92,13 @@ bot.on("messageReactionAdd", async (reaction, user) => {
     const devdisc = reaction.message.guild.roles.cache.get("773143639642734593");
     const gm = reaction.message.guild.roles.cache.get("773143245034356738");
     const videaste = reaction.message.guild.roles.cache.get("773142758881492992");
+
+    //Check the message id
     if(reaction.message.id == "773151483956035584")
     {
+        //Convert user to member tu update his roles
         const member = reaction.message.guild.members.cache.get(user.id);
+            //Update role
             switch(reaction.emoji.name){
                 case "1️⃣":
                     if(!member.roles.cache.has(sysadmin)){
@@ -156,6 +163,7 @@ bot.on("messageReactionAdd", async (reaction, user) => {
 });
 
 bot.on("messageReactionRemove", async (reaction, user) => {
+     //Fetch old message
     if (reaction.partial) {
         try {
 			await reaction.fetch();
@@ -164,6 +172,8 @@ bot.on("messageReactionRemove", async (reaction, user) => {
             return;
         }
     }
+
+    //Init all the role
     const modo = reaction.message.guild.roles.cache.get("733069628309241856");
     const devweb = reaction.message.guild.roles.cache.get("733069524215136306");
     const graph = reaction.message.guild.roles.cache.get("733069581824032818");
@@ -175,9 +185,13 @@ bot.on("messageReactionRemove", async (reaction, user) => {
     const devdisc = reaction.message.guild.roles.cache.get("773143639642734593");
     const gm = reaction.message.guild.roles.cache.get("773143245034356738");
     const videaste = reaction.message.guild.roles.cache.get("773142758881492992");
+
+    //Check the message id
     if(reaction.message.id == "773151483956035584")
     {
+        //Convert user to member tu update his roles
         const member = reaction.message.guild.members.cache.get(user.id);
+            //Update role
             switch(reaction.emoji.name){
                 case "1️⃣":
                         member.roles.remove(sysadmin)
