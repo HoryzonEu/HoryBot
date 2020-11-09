@@ -67,6 +67,8 @@ bot.on("guildMemberAdd", member => {
     //Add these role to the new member
     member.roles.add(project_separator).catch(console.error);
     member.roles.add(role_separator).catch(console.error);
+    const dm = member.createDM();
+    dm.send(`Bienvenue sur Horyzon ${member.user.username} !\nSi vous possédez un code de projet, faites */link XXXX*`);
 });
 
 bot.on("messageReactionAdd", async (reaction, user) => {
