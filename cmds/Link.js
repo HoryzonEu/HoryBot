@@ -7,7 +7,7 @@ module.exports = {
             message.delete({timeout: 0});
             return;
         }
-        const code = Date.now().slice(9);
+        const code = Date.now().toString().slice(9);
         message.channel.send(code)
     }
 }
