@@ -1,8 +1,9 @@
 const fs = require('fs');
+const { send } = require('process');
 module.exports = {
     name: "invite",
     description: "Generate a project's code",
-    execute(message){
+    execute(message, args){
         if(!isFunder(message.author.id))
         {
             message.reply("Vous n'êtes pas fondateur d'un projet !");
@@ -10,11 +11,31 @@ module.exports = {
         }
         else {
             if (message.channel.type != "dm"){
-                message.member.createDM().then(dm => dm.send(makeid(5)));
+                message.member.createDM().then(dm => {
+                    if(!args.length){
+                        sendCode(message.author.id, dm);
+                        return;
+                    }
+                    else if(args[0].toLowerCase() == "new"){
+                        newCode(message.author.id, dm);
+                    }
+                    else {
+                        dm.send("Voulez vous dire */invite* ou */invite new* ?")
+                    }
+                });
                 message.delete({timeout: 0});
             }
             else{
-               message.channel.send(makeid(5));
+                if(!args.length){
+                    sendCode(message.author.id, message.channel);
+                    return;
+                }
+                else if(args[0].toLowerCase() == "new"){
+                    newCode(message.author.id, message.channel);
+                }
+                else {
+                    dm.send("Voulez vous dire */invite* ou */invite new* ?")
+                }
          }
         }
     }
@@ -39,4 +60,27 @@ function makeid(length) {
         }
     })
     return funder;
+ }
+
+ function sendCode(id, channel){
+    const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
+    Object.values(project_file).forEach(function(project){
+        if(project.funder_id == id){
+            channel.send(`Votre code de projet est: ${project.invite}`);
+        }
+    })
+ }
+
+ function newCode(id, channel){
+    const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
+    const code = makeid(5);
+    Object.values(project_file).forEach(function(project){
+        if(project.funder_id == id){
+            project.invite = code;
+        }
+    })
+    fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
+        if (err) console.error(err);
+    })
+    channel.send(`Votre nouveau code de projet est: ${code}`);
  }
