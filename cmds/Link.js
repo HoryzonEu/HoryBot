@@ -19,8 +19,8 @@ module.exports = {
             Object.values(project_file).forEach(function(project){
                 if(project.invite == args[0]){
                     found = 1;
-                    const role = bot.guilds.cache.get('715631412832763954').roles.cache.get(project.id);
-                    bot.guilds.cache.get('715631412832763954').members.cache.get(message.author.id).roles.add(role);
+                    const role = bot.guilds.cache.get('192635786024189953').roles.cache.get(project.id);
+                    bot.guilds.cache.get('192635786024189953').members.cache.get(message.author.id).roles.add(role);
                     name = project;
                 }
             })
