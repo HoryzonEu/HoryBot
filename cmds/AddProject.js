@@ -35,6 +35,9 @@ module.exports = {
                     fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
                         if (err) console.error(err);
                     })
+                    message.guild.channels.create(args[0].toLowerCase(), {
+                        parent: "714087995094859818"
+                    }).then(chan => chan.overwritePermissions(role.id), {SEND_MESSAGES: true, VIEW_CHANNEL: true})
                     message.channel.send(`Le projet <@&${role.id}> a été créé !`);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(role);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(funder);
