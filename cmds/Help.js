@@ -30,7 +30,7 @@ module.exports = {
         }
         else if(args[0] == "invite"){
             var embed = new Discord.MessageEmbed()
-            .setTitle("Liste des commandes")
+            .setTitle("Commande /invite")
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription('-----------------')
             .setColor("BLUE")
@@ -41,7 +41,7 @@ module.exports = {
         }
         else if(args[0] == "link"){
             var embed = new Discord.MessageEmbed()
-            .setTitle("Liste des commandes")
+            .setTitle("Commande /link")
             .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription('-----------------')
             .setColor("BLUE")
