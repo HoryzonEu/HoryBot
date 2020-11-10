@@ -32,8 +32,7 @@ function makeid(length) {
     const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
     Object.values(project_file).forEach(function(project){
         Object.values(project).forEach(function(keys){
-            console.log(`${keys} -- ${project[keys]}`)
-            if (keys == "funder_id" && project[keys] == id) return 1;
+            if (keys == id) return 1;
         })
     })
     return 0;
