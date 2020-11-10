@@ -9,7 +9,6 @@ module.exports = {
         }
         else{
             message.channel.send(makeid(5));
-            message.delete({timeout: 0});
         }
     }
 }
