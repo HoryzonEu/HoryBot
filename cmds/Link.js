@@ -22,8 +22,11 @@ module.exports = {
                 i++;
                 if(project.invite == args[0]){
                     found = 1;
-                    const role = bot.guilds.cache.get('192635786024189953').roles.cache.get(project.id);
-                    bot.guilds.cache.get('192635786024189953').members.cache.get(message.author.id).roles.add(role);
+                    const guild = bot.guilds.cache.get('192635786024189953');
+                    const role = guild.roles.cache.get(project.id);
+                    const member = guild.members.cache.get(message.author.id);
+                    if(member.roles.cache.has(role)) found = -1;
+                    else member.roles.add(role);
                     console.log(`${role.name}`);
                 }
             })
@@ -33,6 +36,8 @@ module.exports = {
             })
             if(found){
                 message.reply(`Vous avez rejoint le projet ${name} !`)
+            }else if(found = -1){
+                message.reply(`Vous avez déjà rejoint le projet ${name} !`)
             }else{
                 message.reply('Code inconnu !');
             }
