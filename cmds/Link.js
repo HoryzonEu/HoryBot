@@ -7,7 +7,7 @@ module.exports = {
             message.delete({timeout: 0});
             return;
         }
-        if(args.lenght != 1){
+        if(args.length != 1){
             message.reply("Merci de suivre ce format de commande */link XXXXX*");
             return;
         }
@@ -16,7 +16,7 @@ module.exports = {
             var found = 0;
             var name = "";
             Object.values(project_file).forEach(function(project){
-                if(project.funder_id == id){
+                if(project.invite == args[0]){
                     found = 1;
                     const role = bot.guilds.cache.get('715631412832763954').roles.cache.get(project.id);
                     bot.guilds.cache.get('715631412832763954').members.cache.get(message.author.id).roles.add(role);
