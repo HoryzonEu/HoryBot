@@ -16,9 +16,11 @@ module.exports = {
             {
                 const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
                 message.guild.roles.create({
-                    name: args[0].toUpperCase(),
-                    color: 'GREEN',
-                    position: role_pos
+                    data: {
+                        name: args[0].toUpperCase(),
+                        color: 'GREEN',
+                        position: role_pos
+                    }
                 }).then(role => {
                     project_file[role.name] = {
                         id: role.id,
@@ -29,7 +31,7 @@ module.exports = {
                     fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
                         if (err) console.error(err);
                     })
-                    message.channel.send(`Le projet <@${role.id}> a été créer !`);
+                    message.channel.send(`Le projet <@&${role.id}> a été créer !`);
                 })
                 
             }else{
