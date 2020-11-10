@@ -38,9 +38,16 @@ module.exports = {
                     message.guild.channels.create(args[0].toLowerCase(), {
                         parent: "714087995094859818"
                     }).then(chan => {
-                        chan.overwritePermissions(role.id, {SEND_MESSAGES: true, VIEW_CHANNEL: true})
-                        chan.overwritePermissions("192635786024189953", {SEND_MESSAGES: false, VIEW_CHANNEL: false})
+                        chan.overwritePermissions([{
+                            id: role.id,
+                            allow: VIEW_CHANNEL
+                        }])
+                        chan.overwritePermissions([{
+                            id: "192635786024189953",
+                            deny: VIEW_CHANNEL
+                        }])
                     })
+                    
                     message.channel.send(`Le projet <@&${role.id}> a été créé !`);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(role);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(funder);
