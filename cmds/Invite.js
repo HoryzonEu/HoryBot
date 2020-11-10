@@ -3,17 +3,19 @@ module.exports = {
     name: "invite",
     description: "Generate a project's code",
     execute(message){
-        if(isFunder(message.author.id) == 0)
+        if(isFunder(message.author.id) != 1)
         {
             message.reply("Vous n'êtes pas fondateur d'un projet !");
             return;
         }
-        if (message.channel.type != "dm"){
-            message.member.createDM().then(dm => dm.send(makeid(5)));
-            message.delete({timeout: 0});
-        }
-        else{
-            message.channel.send(makeid(5));
+        else {
+            if (message.channel.type != "dm"){
+                message.member.createDM().then(dm => dm.send(makeid(5)));
+                message.delete({timeout: 0});
+            }
+            else{
+               message.channel.send(makeid(5));
+         }
         }
     }
 }
