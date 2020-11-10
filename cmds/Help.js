@@ -9,7 +9,6 @@ module.exports = {
         if(!args.length){
             var embed = new Discord.MessageEmbed()
             .setTitle("Liste des commandes")
-            .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription('-----------------')
             .setColor("BLUE")
             .setURL("https://github.com/HoryzonEu/HoryBot");
@@ -31,7 +30,6 @@ module.exports = {
         else if(args[0] == "invite"){
             var embed = new Discord.MessageEmbed()
             .setTitle("Commande /invite")
-            .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription('-----------------')
             .setColor("BLUE")
             .setURL("https://github.com/HoryzonEu/HoryBot")
@@ -42,7 +40,6 @@ module.exports = {
         else if(args[0] == "link"){
             var embed = new Discord.MessageEmbed()
             .setTitle("Commande /link")
-            .setAuthor(bot.user.username, bot.user.avatarURL())
             .setDescription('-----------------')
             .setColor("BLUE")
             .setURL("https://github.com/HoryzonEu/HoryBot")
