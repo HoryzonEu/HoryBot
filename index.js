@@ -46,9 +46,9 @@ bot.on("message", async message => {
     //Execute the command or catch potentials errors
     try{
         if(bot.commands.has(command)){
-            bot.commands.get(command).execute(message, args, bot);
+            bot.commands.get(command).execute(message, args, bot, prefix);
         }else if(bot.alias.has(command)){
-            bot.alias.get(command).execute(message, args, bot);
+            bot.alias.get(command).execute(message, args, bot, prefix);
         }
         
     }catch(error){

@@ -4,7 +4,7 @@ module.exports = {
     name: "help",
     description: "Affiche les commandes",
     alias: ["?"],
-    execute(message, args, bot)
+    execute(message, args, bot, prefix)
     {
         if(!args.length){
             var embed = new Discord.MessageEmbed()
