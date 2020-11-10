@@ -3,7 +3,8 @@ module.exports = {
     name: "invite",
     description: "Generate a project's code",
     execute(message){
-        if(isFunder(message.author.id) != 1)
+        console.log(isFunder(message.author.id));
+        if(isFunder(message.author.id) != '1')
         {
             message.reply("Vous n'êtes pas fondateur d'un projet !");
             return;
@@ -33,9 +34,7 @@ function makeid(length) {
  function isFunder(id){
     const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
     Object.values(project_file).forEach(function(project){
-        console.log (`${project.funder_id} -- ${id}`)
         if(project.funder_id == id){
-            console.log("yes");
             return 1;
         }
     })
