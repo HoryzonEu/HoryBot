@@ -31,7 +31,9 @@ function makeid(length) {
  function isFunder(id){
     const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
     Object.keys(project_file).forEach(function(project){
-        if (project.funder_id == id) return 1;
+        Object.keys(project).forEach(function(keys){
+            if (keys == "funder_id" && project[keys] == id) return 1;
+        })
     })
     return 0;
  }
