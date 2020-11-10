@@ -46,7 +46,7 @@ module.exports = {
             .setDescription('-----------------')
             .setColor("BLUE")
             .setURL("https://github.com/HoryzonEu/HoryBot")
-            .addField("/link XXXXX", "Utilise un code de projet (en message privé) XXXXX = code de projet");
+            .addField("/link XXXXX", "Utilise le code XXXXX(en message privé)");
             message.channel.send(embed);
         }
         else{
