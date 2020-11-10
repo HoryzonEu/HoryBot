@@ -32,7 +32,7 @@ module.exports = {
                         if (err) console.error(err);
                     })
                     message.channel.send(`Le projet <@&${role.id}> a été créer !`);
-                    message.guild.members.cache.get(message.mentions.users.first().id).role.add(role);
+                    message.guild.members.cache.get(message.mentions.users.first().id).roles.add(role);
                 })
                 
             }else{
