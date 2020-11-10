@@ -24,6 +24,6 @@ module.exports = {
         }
         message.channel.bulkDelete(amount + 1, true);
         if (amount > 1) message.reply(`\`${amount}\` messages ont été supprimés`);
-        else message.reply(`\`${amount}\` messages q été supprimé`);
+        else message.reply(`\`${amount}\` message a été supprimé`);
     }
 }
