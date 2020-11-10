@@ -40,11 +40,11 @@ module.exports = {
                     }).then(chan => {
                         chan.overwritePermissions([{
                             id: role.id,
-                            allow: VIEW_CHANNEL
+                            allow: "VIEW_CHANNEL"
                         }])
                         chan.overwritePermissions([{
                             id: "192635786024189953",
-                            deny: VIEW_CHANNEL
+                            deny: "VIEW_CHANNEL"
                         }])
                     })
                     
