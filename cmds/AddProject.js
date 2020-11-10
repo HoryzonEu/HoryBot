@@ -1,12 +1,11 @@
-const { GuildMember } = require('discord.js');
 const fs = require('fs');
 module.exports = {
     name: "newproject",
     description: "Add a project to the server",
     alias: ['np'],
     execute(message, args){
-        const horyzon_team = message.guild.roles.cache.get('715210617149194270');
         const role_pos = message.guild.roles.cache.get('733069259126865922').position + 1;
+        const funder = message.guild.roles.cache.get('733070093570932739');
         if (!message.member.roles.cache.has('715210617149194270')){
             message.reply("vous n'avez pas la permission d'effectuer cette commande !");
             message.delete({timeout: 0});
@@ -14,6 +13,11 @@ module.exports = {
         else{
             if(message.mentions.users.first() && args.length == 2)
             {
+                if(message.guild.roles.cache.find(role => role.name === args[0].toUpperCase())){
+                    message.reply("ce projet existe deja !");
+                    message.delete({timeout: 0});
+                    return;
+                }
                 const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
                 message.guild.roles.create({
                     data: {
@@ -31,8 +35,9 @@ module.exports = {
                     fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
                         if (err) console.error(err);
                     })
-                    message.channel.send(`Le projet <@&${role.id}> a été créer !`);
+                    message.channel.send(`Le projet <@&${role.id}> a été créé !`);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(role);
+                    message.guild.members.cache.get(message.mentions.users.first().id).roles.add(funder);
                 })
                 
             }else{
