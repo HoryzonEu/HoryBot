@@ -42,13 +42,11 @@ module.exports = {
                         chan.overwritePermissions([{
                             id: "192635786024189953",
                             deny: "VIEW_CHANNEL"
-                        }])
-                        chan.overwritePermissions([{
+                        },{
                             id: role.id,
                             allow: "VIEW_CHANNEL"
                         }])
                     })
-                    
                     message.channel.send(`Le projet <@&${role.id}> a été créé !`);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(role);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(funder);
