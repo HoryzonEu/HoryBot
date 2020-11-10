@@ -25,15 +25,19 @@ module.exports = {
                     const guild = bot.guilds.cache.get('192635786024189953');
                     const role = guild.roles.cache.get(project.id);
                     const member = guild.members.cache.get(message.author.id);
-                    if(member.roles.cache.find(r => r.id === project.id)) found = -1;
-                    else member.roles.add(role);
+                    if(member.roles.cache.some(r => r.id === project.id)){
+                        found = -1;
+                    } 
+                    else {
+                        member.roles.add(role);
+                    }
                 }
             })
             Object.keys(project_file).forEach(function(project){
                 j++;
                 if(i == j) name = project;
             })
-            if(found){
+            if(found > 0){
                 message.reply(`Vous avez rejoint le projet ${name} !`)
             }else if(found = -1){
                 message.reply(`Vous avez déjà rejoint le projet ${name} !`)
