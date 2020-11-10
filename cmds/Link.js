@@ -25,9 +25,8 @@ module.exports = {
                     const guild = bot.guilds.cache.get('192635786024189953');
                     const role = guild.roles.cache.get(project.id);
                     const member = guild.members.cache.get(message.author.id);
-                    if(member.roles.cache.has(role)) found = -1;
+                    if(member.roles.cache.find(r => r.id === project.id)) found = -1;
                     else member.roles.add(role);
-                    console.log(`${role.name}`);
                 }
             })
             Object.keys(project_file).forEach(function(project){
