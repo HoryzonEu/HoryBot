@@ -27,6 +27,14 @@ module.exports = {
                     const member = guild.members.cache.get(message.author.id);
                     if(member.roles.cache.some(r => r.id === project.id)) found = -1;
                     else  member.roles.add(role);
+                    if (found == 1)
+                    {
+                        project.invite = makeid(5);
+                        guild.members.cache.get(project.funder_id).createDM().then(dm => dm.send(`<@${member.id}> a rejoint ton projet ! Voilà ton nouveau code de projet: ${project.invite}`));
+                        fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
+                            if (err) console.error(err);
+                        })
+                    }
                 }
             })
             Object.keys(project_file).forEach(function(project){
@@ -43,3 +51,13 @@ module.exports = {
         }
     }
 }
+
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
