@@ -27,6 +27,10 @@ module.exports = {
             });
             message.channel.send(embed);
         }
+        else if(args.length > 1){
+            message.reply("merci de ne renseignez qu'un arguments !")
+            message.delete({timeout: 0});
+        }
         else if(args[0] == "invite"){
             var embed = new Discord.MessageEmbed()
             .setTitle("Commande /invite")
@@ -44,6 +48,15 @@ module.exports = {
             .setColor("BLUE")
             .setURL("https://github.com/HoryzonEu/HoryBot")
             .addField("/link XXXXX", "Utilise le code XXXXX(en message privé)");
+            message.channel.send(embed);
+        }
+        else if(args[0] == "newproject" || args[0] == "np"){
+            var embed = new Discord.MessageEmbed()
+            .setTitle("Commande /newproject")
+            .setDescription('-----------------')
+            .setColor("BLUE")
+            .setURL("https://github.com/HoryzonEu/HoryBot")
+            .addField("/newproject PROJET @Fondateur", "Créer un nouveau projet appelé PROJET et défini l'utilisateur mentionné en tant que fondateur");
             message.channel.send(embed);
         }
         else{
