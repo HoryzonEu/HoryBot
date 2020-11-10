@@ -20,10 +20,12 @@ module.exports = {
                     color: 'GREEN',
                     position: role_pos
                 }).then(role => {
-                    project_file[role.name].id = role.id;
-                    project_file[role.name].funder_id = message.mentions.users.first().id;
-                    project_file[role.name].funder_name = message.mentions.users.first().username;
-                    project_file[role.name].invite = makeid(5);
+                    project_file[role.name] = {
+                        id = role.id,
+                        funder_id = message.mentions.users.first().id,
+                        funder_name = message.mentions.users.first().username,
+                        invite = makeid(5)
+                    };
                     fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
                         if (err) console.error(err);
                     })
