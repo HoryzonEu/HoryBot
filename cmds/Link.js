@@ -15,14 +15,21 @@ module.exports = {
         else{
             const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
             var found = 0;
+            var i = 0;
+            var j = 0;
             var name = "";
             Object.values(project_file).forEach(function(project){
+                i++;
                 if(project.invite == args[0]){
                     found = 1;
                     const role = bot.guilds.cache.get('192635786024189953').roles.cache.get(project.id);
                     bot.guilds.cache.get('192635786024189953').members.cache.get(message.author.id).roles.add(role);
-                    name = project;
+                    console.log(`${role.name}`);
                 }
+            })
+            Object.keys(project_file).forEach(function(project){
+                j++;
+                if(i == j) name = project;
             })
             if(found){
                 message.reply(`Vous avez rejoint le projet ${name} !`)
