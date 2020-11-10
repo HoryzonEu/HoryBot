@@ -34,7 +34,7 @@ module.exports = {
                     newCode(message.author.id, message.channel);
                 }
                 else {
-                    dm.send("Voulez vous dire */invite* ou */invite new* ?")
+                    message.channel.send("Voulez vous dire */invite* ou */invite new* ?")
                 }
          }
         }
