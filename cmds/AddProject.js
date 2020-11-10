@@ -32,6 +32,7 @@ module.exports = {
                         if (err) console.error(err);
                     })
                     message.channel.send(`Le projet <@&${role.id}> a été créer !`);
+                    message.mentions.members.first().role.add(role);
                 })
                 
             }else{
