@@ -23,7 +23,8 @@ module.exports = {
                     data: {
                         name: args[0].toUpperCase(),
                         color: 'GREEN',
-                        position: role_pos
+                        position: role_pos,
+                        mentionable: true
                     }
                 }).then(role => {
                     project_file[role.name] = {
@@ -39,12 +40,12 @@ module.exports = {
                         parent: "714087995094859818"
                     }).then(chan => {
                         chan.overwritePermissions([{
-                            id: role.id,
-                            allow: "VIEW_CHANNEL"
-                        }])
-                        chan.overwritePermissions([{
                             id: "192635786024189953",
                             deny: "VIEW_CHANNEL"
+                        }])
+                        chan.overwritePermissions([{
+                            id: role.id,
+                            allow: "VIEW_CHANNEL"
                         }])
                     })
                     
