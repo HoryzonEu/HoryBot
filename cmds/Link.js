@@ -1,3 +1,4 @@
+const fs = require('fs');
 module.exports = {
     name: "link",
     description: "Link account to a project",
@@ -7,7 +8,7 @@ module.exports = {
             message.delete({timeout: 0});
             return;
         }
-        if(args.length != 1){
+        if(args.length != 1 || args[0].length != 5){
             message.reply("Merci de suivre ce format de commande */link XXXXX*");
             return;
         }
