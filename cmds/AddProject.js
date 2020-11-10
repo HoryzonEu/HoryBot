@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     name: "newproject",
     description: "Add a project to the server",
-    alias = ['np'],
+    alias: ['np'],
     execute(message, args){
         const horyzon_team = message.guild.roles.cache.get('715210617149194270');
         if (!message.member.roles.cache.has('715210617149194270')){
