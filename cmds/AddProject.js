@@ -19,6 +19,7 @@ module.exports = {
                     return;
                 }
                 const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
+                const code = makeid(5);
                 message.guild.roles.create({
                     data: {
                         name: args[0].toUpperCase(),
@@ -31,7 +32,7 @@ module.exports = {
                         id: role.id,
                         funder_id: message.mentions.users.first().id,
                         funder_name: message.mentions.users.first().username,
-                        invite: makeid(5)
+                        invite: code
                     };
                     fs.writeFileSync('./data/projects.json', JSON.stringify(project_file, null, 4), (err) => {
                         if (err) console.error(err);
@@ -50,6 +51,7 @@ module.exports = {
                     message.channel.send(`Le projet <@&${role.id}> a été créé !`);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(role);
                     message.guild.members.cache.get(message.mentions.users.first().id).roles.add(funder);
+                    message.guild.members.cache.get(message.mentions.users.first().id).createDM().then(dm => dm.send(`Le projet ${role.name} a été créé ! Vous en ête le fondateur.\nPour permettre à vos collaborateur de vous rejoindre, transmettez leur ce code: \`${code}\` (ce code sera regénéré à chaque utilisation)`))
                 })
                 
             }else{
