@@ -1,7 +1,7 @@
 const fs = require('fs');
 module.exports = {
     name: "newproject",
-    description: "Add a project to the server",
+    description: "Ajoute un projet au serveur (Admin only)",
     alias: ['np'],
     execute(message, args){
         const role_pos = message.guild.roles.cache.get('733069259126865922').position + 1;

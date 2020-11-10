@@ -2,7 +2,7 @@ const fs = require('fs');
 const { send } = require('process');
 module.exports = {
     name: "invite",
-    description: "Generate a project's code",
+    description: "Envoie votre code de projet (Fonda only) /help invite",
     execute(message, args){
         if(!isFunder(message.author.id))
         {

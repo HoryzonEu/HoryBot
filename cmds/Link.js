@@ -1,7 +1,7 @@
 const fs = require('fs');
 module.exports = {
     name: "link",
-    description: "Link account to a project",
+    description: "Permet d'utiliser un code de projet /help link",
     execute (message, args, bot){
         if (message.channel.type != "dm"){
             message.reply("cette commande n'est utilisable qu'en message privé !");
@@ -25,12 +25,8 @@ module.exports = {
                     const guild = bot.guilds.cache.get('192635786024189953');
                     const role = guild.roles.cache.get(project.id);
                     const member = guild.members.cache.get(message.author.id);
-                    if(member.roles.cache.some(r => r.id === project.id)){
-                        found = -1;
-                    } 
-                    else {
-                        member.roles.add(role);
-                    }
+                    if(member.roles.cache.some(r => r.id === project.id)) found = -1;
+                    else  member.roles.add(role);
                 }
             })
             Object.keys(project_file).forEach(function(project){

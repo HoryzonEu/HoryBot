@@ -5,7 +5,7 @@ module.exports = {
     //Or /ptest
     alias: ["ptest"],
     //Description for a potential help command
-    description: "Test the bot reaction",
+    description: "Test si le bot est vivant",
     //The script of the command
     async execute(message, args){
         //Delete the message after 5 seconds
