@@ -31,7 +31,7 @@ function makeid(length) {
  function isFunder(id){
     const project_file = JSON.parse(fs.readFileSync("./data/projects.json", "utf-8"));
     Object.values(project_file).forEach(function(project){
-        console.log (`${funder_id} -- ${id}`)
+        console.log (`${project.funder_id} -- ${id}`)
         if(project.funder_id == id){
             console.log("yes");
             return 1;
